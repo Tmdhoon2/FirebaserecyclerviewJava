@@ -1,7 +1,7 @@
 package com.example.firebaserecyclerview;
 
 public class User {
-    private String profile;
+    private String cover;
     private  String id;
     private  int pw;
     private String  userName;
@@ -9,11 +9,11 @@ public class User {
     public User(){}
 
     public String getProfile() {
-        return profile;
+        return cover;
     }
 
-    public void setProfile(String profile) {
-        this.profile = profile;
+    public void setProfile(String cover) {
+        this.cover = cover;
     }
 
     public String getId() {

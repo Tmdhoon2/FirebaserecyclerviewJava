@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();                                                  // 파이어베이스 데이터베이스 연결
 
-        databaseReference  = database.getReference("User");                                     // DB 테이블 연결
+        databaseReference  = database.getReference("User");                                    // DB 테이블 연결
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {                          // 파이어베이스 데이터베이스의 데이터를 받아오는 곳

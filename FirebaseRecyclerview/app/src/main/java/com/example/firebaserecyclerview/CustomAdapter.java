@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
-    private ArrayList<User> arrayList;
+    private ArrayList<User> arrayList;                                                                                  // 데이터를 담을 배열 선언
     private Context context;
 
     public CustomAdapter(ArrayList<User> arrayList, Context context) {
@@ -36,10 +36,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         Glide.with(holder.itemView)
                 .load(arrayList.get(position).getProfile())
-                .into(holder.iv_profile);
-        holder.tv_id.setText(arrayList.get(position).getId());
-        holder.tv_pw.setText(String.valueOf(arrayList.get(position).getPw()));
-        holder.tv_userName.setText(arrayList.get(position).getUserName());
+                .into(holder.cover);
+        holder.id.setText(arrayList.get(position).getId());
+        holder.pw.setText(String.valueOf(arrayList.get(position).getPw()));
+        holder.userName.setText(arrayList.get(position).getUserName());
     }
 
     @Override
@@ -49,17 +49,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        ImageView iv_profile;
-        TextView tv_id;
-        TextView tv_pw;
-        TextView tv_userName;
+        ImageView cover;
+        TextView id;
+        TextView pw;
+        TextView userName;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.iv_profile = itemView.findViewById(R.id.profile);
-            this.tv_id = itemView.findViewById(R.id.tv_id);
-            this.tv_pw = itemView.findViewById(R.id.tv_pw);
-            this.tv_userName = itemView.findViewById(R.id.tv_userName);
+            this.cover = itemView.findViewById(R.id.cover);
+            this.id = itemView.findViewById(R.id.id);
+            this.pw = itemView.findViewById(R.id.pw);
+            this.userName = itemView.findViewById(R.id.userName);
         }
     }
 }
