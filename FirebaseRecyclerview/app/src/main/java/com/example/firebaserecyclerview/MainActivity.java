@@ -19,10 +19,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ArrayList<User> arrayList;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<User> arrayList;
+
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 

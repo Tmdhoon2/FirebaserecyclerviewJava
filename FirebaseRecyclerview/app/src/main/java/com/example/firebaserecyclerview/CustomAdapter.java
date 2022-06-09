@@ -27,13 +27,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
         CustomViewHolder holder = new CustomViewHolder(view);
+
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+
         Glide.with(holder.itemView)
                 .load(arrayList.get(position).getProfile())
                 .into(holder.cover);
