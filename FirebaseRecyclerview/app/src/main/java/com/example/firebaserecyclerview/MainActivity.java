@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
@@ -58,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
         adapter = new CustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);                                                           // 리사이클러뷰에 어댑터 연결

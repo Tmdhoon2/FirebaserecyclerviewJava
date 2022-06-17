@@ -1,22 +1,22 @@
 package com.example.firebaserecyclerview;
 
 public class User {
-    private String cover;
-    private  String id;
-    private  int pw;
-    private String  userName;
+    private String cover;                                                                           // profile image
+    private  String id;                                                                             // User Id
+    private  int pw;                                                                                // User Password
+    private String  userName;                                                                       // UserName
 
-    public User(){}
+    public User(){}                                                                                 // User
 
-    public String getProfile() {
+    public String getCover() {                                                                      // getCover
         return cover;
     }
 
-    public void setProfile(String cover) {
+    public void setCover(String cover) {                                                            // setCover
         this.cover = cover;
     }
 
-    public String getId() {
+    public String getId() {                                                                         // getId
         return id;
     }
 
@@ -24,19 +24,19 @@ public class User {
         this.id = id;
     }
 
-    public int getPw() {
+    public int getPw() {                                                                            // getPassWord
         return pw;
     }
 
-    public void setPw(int pw) {
+    public void setPw(int pw) {                                                                     // setPassWord
         this.pw = pw;
     }
 
-    public String getUserName() {
+    public String getUserName() {                                                                   // getUserName
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(String userName) {                                                      // setUserName
         this.userName = userName;
     }
 }

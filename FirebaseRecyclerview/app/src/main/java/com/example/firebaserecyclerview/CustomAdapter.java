@@ -1,9 +1,11 @@
 package com.example.firebaserecyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,19 +18,20 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
-    private ArrayList<User> arrayList;                                                                                  // 데이터를 담을 배열 선언
-    private Context context;
+    private ArrayList<User> arrayList;                                                                                  // ArrayList of User
+    private Context context;                                                                                            // Context
 
-    public CustomAdapter(ArrayList<User> arrayList, Context context) {
+    public CustomAdapter(ArrayList<User> arrayList, Context context) {                                                  // CustomAdapter Method
         this.arrayList = arrayList;
         this.context = context;
     }
+
 
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);      //
         CustomViewHolder holder = new CustomViewHolder(view);
 
         return holder;
@@ -37,12 +40,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
 
-        Glide.with(holder.itemView)
-                .load(arrayList.get(position).getProfile())
-                .into(holder.cover);
+        Glide.with(holder.itemView)                                                                                   // Glide 호출
+                .load(arrayList.get(position).getCover())                                                             // arraylist에서 이미지 불러오기
+                .into(holder.cover);                                                                                  // into cover
         holder.id.setText(arrayList.get(position).getId());
         holder.pw.setText(String.valueOf(arrayList.get(position).getPw()));
         holder.userName.setText(arrayList.get(position).getUserName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SecondActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
