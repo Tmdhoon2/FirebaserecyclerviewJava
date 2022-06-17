@@ -35,15 +35,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerview);                                             // 아이디 연결
+
         recyclerView.setHasFixedSize(true);                                                         // 리사이클러뷰 기존성능 강화
+
         layoutManager = new LinearLayoutManager(this);
+
         recyclerView.setLayoutManager(layoutManager);
+
         arrayList = new ArrayList<>();                                                              // User 객체를 담을 어레이 리스트 (어댑터쪽으로)
 
         database = FirebaseDatabase.getInstance();                                                  // 파이어베이스 데이터베이스 연결
 
         databaseReference  = database.getReference("User");                                    // DB 테이블 연결
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {                 // 한번만 호출됨 DataReference 에 ValueEventListener 추가
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {                          // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
                 arrayList.clear();                                                                  // 기존 배열리스트가 존재하지 않게 초기화
