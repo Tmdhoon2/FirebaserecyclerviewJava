@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FirebaseRecyclerview</string>
+    <string name="pw">pw</string>
 </resources>

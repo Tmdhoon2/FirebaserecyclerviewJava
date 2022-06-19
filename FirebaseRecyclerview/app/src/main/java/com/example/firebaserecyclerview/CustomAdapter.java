@@ -1,7 +1,12 @@
 package com.example.firebaserecyclerview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
-    private ArrayList<User> arrayList;                                                                                  // ArrayList of User
-    private Context context;                                                                                            // Context
+    private ArrayList<User> arrayList;                                                              // ArrayList of User
+    private Context context;                                                                        // Context
 
-    public CustomAdapter(ArrayList<User> arrayList, Context context) {                                                  // CustomAdapter Method
+    public CustomAdapter(ArrayList<User> arrayList, Context context) {                              // CustomAdapter Method
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -40,9 +46,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
 
-        Glide.with(holder.itemView)                                                                                   // Glide 호출
-                .load(arrayList.get(position).getCover())                                                             // arraylist에서 이미지 불러오기
-                .into(holder.cover);                                                                                  // into cover
+        Glide.with(holder.itemView)                                                                 // Glide 호출
+                .load(arrayList.get(position).getCover())                                           // arraylist에서 이미지 불러오기
+                .into(holder.cover);                                                                // into cover
         holder.id.setText(arrayList.get(position).getId());
         holder.pw.setText(String.valueOf(arrayList.get(position).getPw()));
         holder.userName.setText(arrayList.get(position).getUserName());
@@ -50,8 +56,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(context, SecondActivity.class);
-                intent.putExtra("cover", arrayList.get(position).getCover());
+
+
+
+                intent.putExtra("cover", arrayList.get(position).getCover());                 // SecondActivity intent
                 intent.putExtra("id", arrayList.get(position).getId());
                 intent.putExtra("pw", arrayList.get(position).getPw());
                 intent.putExtra("userName", arrayList.get(position).getUserName());
@@ -63,11 +73,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public int getItemCount() {
-        // 삼항 연산자
-        return (arrayList !=null ? arrayList.size() : 0);
+        return (arrayList !=null ? arrayList.size() : 0);                                           // return ArrayListSize
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
+    public class CustomViewHolder extends RecyclerView.ViewHolder {                                 // RecyclerView.ViewHolder를 상속받는 CustomViewHolder
         ImageView cover;
         TextView id;
         TextView pw;

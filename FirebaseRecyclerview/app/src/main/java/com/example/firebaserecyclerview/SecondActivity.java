@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
@@ -20,9 +22,6 @@ import java.util.ArrayList;
 public class SecondActivity extends AppCompatActivity {
 
     private ActivitySecondActivityrBinding binding;
-    private ArrayList<User> arrayList;
-    private FirebaseDatabase database;
-    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +30,16 @@ public class SecondActivity extends AppCompatActivity {
         binding = ActivitySecondActivityrBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Intent intent = getIntent();
+        Bundle extras = getIntent().getExtras();
 
-        //binding.ProfileImage.setImageResource(intent.getIntExtra("cover"));
-        binding.UserId.setText(intent.getStringExtra("id"));
-        binding.UserPw.setText(intent.getStringExtra("pw"));
-        binding.userName.setText(intent.getStringExtra("userName"));
+
+        String id = extras.getString("id");
+        String pw = String.valueOf(extras.getInt("pw"));
+        String userName = extras.getString("userName");
+
+        binding.UserId.setText(id);
+        binding.UserPw.setText(pw);
+        binding.userName.setText(userName);
 
     }
 }
