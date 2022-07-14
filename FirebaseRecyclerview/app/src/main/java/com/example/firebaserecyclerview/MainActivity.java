@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();                                                  // 파이어베이스 데이터베이스 연결
 
-        databaseReference  = database.getReference("User");                                    // DB 테이블 연결
+            databaseReference  = database.getReference("User");                                // DB 테이블 연결
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {                 // 한번만 호출됨 DataReference 에 ValueEventListener 추가
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {                          // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {                           // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
                 arrayList.clear();                                                                  // 기존 배열리스트가 존재하지 않게 초기화
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){                           // 반복문으로 데이터 List를 추출해냄
                     User user = snapshot.getValue(User.class);                                      // 만들어뒀던 User 객체에 데이터를 담는다.
@@ -64,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
         adapter = new CustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);                                                           // 리사이클러뷰에 어댑터 연결

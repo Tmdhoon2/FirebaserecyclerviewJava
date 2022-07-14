@@ -59,8 +59,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
                 Intent intent = new Intent(context, SecondActivity.class);
 
-
-
                 intent.putExtra("cover", arrayList.get(position).getCover());                 // SecondActivity intent
                 intent.putExtra("id", arrayList.get(position).getId());
                 intent.putExtra("pw", arrayList.get(position).getPw());
